@@ -20,7 +20,7 @@
 
       request.onload = function() {
         if (request.status >= 200 && request.status < 400){
-          console.log('response from', url, request.responseText);
+          console.log('response from', url, request.status, request.responseText);
         } else {
           // We reached our target server, but it returned an error
           console.error('some error', url, request.responseText);
@@ -46,7 +46,21 @@
 
     if (navigator && navigator.serviceWorker) {
       navigator.serviceWorker.register('/service-turtle.js').then(function (reg) {
-        console.log('◕‿◕', reg);
+        console.log('Caught service turtle, use `turtle` object to mock responses');
+
+
+        window.turtle = {
+          get: function (url, code) {
+            if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+              navigator.serviceWorker.controller.postMessage({
+                method: 'get',
+                url: url,
+                code: code
+              });
+            }
+          }
+        };
+
       }, function(err) {
         console.error('no luck loading service worker', err);
       });
