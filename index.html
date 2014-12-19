@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>service-turtle</title>
+</head>
+
+<body>
+  <h1>service-turtle</h1>
+
+  <div>
+  </div>
+
+  <script>
+    if (navigator && navigator.serviceWorker) {
+      navigator.serviceWorker.register('/service-turtle.js').then(function (reg) {
+        console.log('◕‿◕', reg);
+      }, function(err) {
+        console.error('no luck loading service worker', err);
+      });
+    } else {
+      console.error('Sorry, not ServiceWorker feature, maybe enable it?');
+      console.error('http://jakearchibald.com/2014/using-serviceworker-today/');
+    }
+  </script>
+</body>
+</html>
