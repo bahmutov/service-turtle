@@ -9,9 +9,41 @@
   <h1>service-turtle</h1>
 
   <div>
+    <button id="fetch">Fetch something</button>
   </div>
 
   <script>
+
+    function fetch(url) {
+      var request = new XMLHttpRequest();
+      request.open('GET', url, true);
+
+      request.onload = function() {
+        if (request.status >= 200 && request.status < 400){
+          console.log('response from', url, request.responseText);
+        } else {
+          // We reached our target server, but it returned an error
+          console.error('some error', url, request.responseText);
+        }
+      };
+
+      request.onerror = function() {
+        // There was a connection error of some sort
+        console.error('error', url, request.responseText);
+      };
+
+      request.send();
+    }
+
+    function onButtonClick() {
+      console.log('button clicked');
+      fetch('/some/url');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('#fetch').addEventListener('click', onButtonClick);
+    });
+
     if (navigator && navigator.serviceWorker) {
       navigator.serviceWorker.register('/service-turtle.js').then(function (reg) {
         console.log('◕‿◕', reg);
