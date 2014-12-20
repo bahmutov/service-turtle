@@ -37,6 +37,18 @@ module.exports = function(grunt) {
       options: {
           config: 'jscs.json'
       }
+    },
+
+    'gh-pages': {
+      options: {
+        base: '.'
+      },
+      src: [
+        'index.html',
+        'README.md',
+        'turtle.js',
+        'service-turtle.js'
+      ]
     }
   });
 
