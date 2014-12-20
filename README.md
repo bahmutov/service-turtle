@@ -1,6 +1,11 @@
 # service-turtle
 
-Read [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/)
+Read [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
+enable ServiceWorker in Chrome today.
+
+    Open chrome://flags/ in the Chrome browser
+    Enable "Enable experimental Web Platform features."
+    Restart Chrome
 
 ### Small print
 
@@ -16,8 +21,6 @@ Spread the word: tweet, star on github, etc.
 
 Support: if you find any problems with this module, email / tweet /
 [open issue](https://github.com/bahmutov/service-turtle/issues) on Github
-
-
 
 ## MIT License
 
