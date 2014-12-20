@@ -9,6 +9,8 @@ enable ServiceWorker in Chrome today.
 
 ## Install
 
+    bower install service-turtle
+
 Include `turtle.js` in your page. It will call `service-turtle.js` as a service worker.
 This will register `turtle` object on the `window` scope.
 
