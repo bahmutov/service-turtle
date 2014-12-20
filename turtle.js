@@ -1,5 +1,5 @@
 if (navigator && navigator.serviceWorker) {
-  navigator.serviceWorker.register('/service-turtle.js').then(function (reg) {
+  navigator.serviceWorker.register('/service-turtle.js').then(function () {
     console.log('Caught service turtle, use `turtle` object to mock responses');
 
 
@@ -24,7 +24,7 @@ if (navigator && navigator.serviceWorker) {
       }
     };
 
-  }, function(err) {
+  }, function (err) {
     console.error('no luck loading service worker', err);
   });
 } else {

@@ -1,22 +1,19 @@
-var name = 'service-turtle';
-console.log(name, 'startup');
+/* global self, Response */
+var myName = 'service-turtle';
+console.log(myName, 'startup');
 
-self.addEventListener('install', function (event) {
-  console.log(name, 'installed');
+self.addEventListener('install', function () {
+  console.log(myName, 'installed');
 });
 
-self.addEventListener('activate', function (event) {
-  console.log(name, 'activated');
+self.addEventListener('activate', function () {
+  console.log(myName, 'activated');
 });
 
 var mocks;
 
-function sendResponse(event, response) {
-  event.respondWith(response);
-}
-
 self.addEventListener('fetch', function (event) {
-  console.log(name, 'fetch', event);
+  console.log(myName, 'fetch', event);
 
   mocks = mocks || {};
 
@@ -32,14 +29,14 @@ self.addEventListener('fetch', function (event) {
 
       if (options.timeout) {
 
-        event.respondWith(new Promise(function (resolve, reject) {
+        event.respondWith(new Promise(function (resolve) {
           setTimeout(function () {
             resolve(response);
           }, options.timeout);
         }));
 
       } else {
-        sendResponse(event, response);
+        event.respondWith(response);
       }
     }
   });
