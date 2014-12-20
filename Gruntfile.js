@@ -8,6 +8,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    sync: {
+      all: {
+        options: {
+          sync: ['author', 'name', 'version', 'main',
+            'private', 'license', 'keywords', 'homepage'],
+        }
+      }
+    },
+
     jshint: {
       all: sourceFiles,
       options: {
@@ -35,5 +44,5 @@ module.exports = function(grunt) {
   plugins.forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('lint', ['jshint', 'eslint', 'jscs']);
-  grunt.registerTask('default', ['nice-package', 'deps-ok', 'lint']);
+  grunt.registerTask('default', ['nice-package', 'deps-ok', 'sync', 'lint']);
 };
