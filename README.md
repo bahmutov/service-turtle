@@ -7,6 +7,41 @@ enable ServiceWorker in Chrome today.
     Enable "Enable experimental Web Platform features."
     Restart Chrome
 
+## Install
+
+Include `turtle.js` in your page. It will call `service-turtle.js` as a service worker.
+This will register `turtle` object on the `window` scope.
+
+## Example
+
+Mock all GET requests to `/some/url/` to return 502 error after 3 seconds.
+
+```js
+turtle.get('/some/url', 502, { timeout: 3000 });
+```
+
+Clear all installed mocks
+
+```js
+turtle.clear();
+```
+
+![screenshot](images/service-turtle.png)
+
+## Updating service worker code
+
+Service worker JavaScript stays with the browser, and could require reloading the page twice to get the browser
+to notice changed code, install it and run on the second reload. You also need to use it with a webserver, not
+opening the HTML file from the file system. If reloading the page does not refresh the service worker, or
+if you want to step through its code to debug it:
+
+    Open chrome://serviceworker-internals/
+    Find the script in the list, something like `Script: http://localhost:3003/service-turtle.js`
+    Click `Stop` and then `Unregister` buttons to remove it
+
+These steps will force the page to load the new service worker next time you visit the page.
+Then after another reload the service worker will start.
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2014

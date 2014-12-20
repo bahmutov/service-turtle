@@ -4,13 +4,22 @@ if (navigator && navigator.serviceWorker) {
 
 
     window.turtle = {
-      get: function (url, code) {
+      clear: function () {
+        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+          navigator.serviceWorker.controller.postMessage('clear');
+          console.log('turtle has cleared mocks');
+        }
+      },
+      get: function (url, code, options) {
         if (navigator.serviceWorker && navigator.serviceWorker.controller) {
           navigator.serviceWorker.controller.postMessage({
             method: 'get',
             url: url,
-            code: code
+            code: code,
+            options: options
           });
+        } else {
+          console.error('service worker not found, maybe reload?');
         }
       }
     };
