@@ -1,5 +1,7 @@
 # service-turtle
 
+> HTTP mock in-page proxy using ServiceWorker
+
 Read [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
 enable ServiceWorker in Chrome today.
 
@@ -12,11 +14,21 @@ enable ServiceWorker in Chrome today.
     bower install service-turtle
 
 Include `turtle.js` in your page. It will call `service-turtle.js` as a service worker.
-This will register `turtle` object on the `window` scope.
+This will register `turtle` object on the `window` scope. Use `turtle` object methods to add
+mock responses for specific urls.
+
+```js
+turtle.get(urlRegexString, returnCode, options);
+urlgRegexString - string used to construct RegExp to test against request url
+returnCode - numeric return code for given url
+options (optional) - extra fields, currently only single field is used
+    timeout (ms) - return mock code after waiting for timeout milliseconds
+```
 
 ## Example
 
 Mock all GET requests to `/some/url/` to return 502 error after 3 seconds.
+See [index.html](index.html) in this repo as example.
 
 ```js
 turtle.get('/some/url', 502, { timeout: 3000 });
@@ -43,6 +55,8 @@ if you want to step through its code to debug it:
 
 These steps will force the page to load the new service worker next time you visit the page.
 Then after another reload the service worker will start.
+
+**Note:** service worker script can only be loaded from a safe url: `localhost`, `127.0.0.1` or via `https` protocol. 
 
 ### Small print
 
