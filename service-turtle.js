@@ -22,10 +22,15 @@ self.addEventListener('fetch', function (event) {
     if (urlReg.test(event.request.url)) {
       var mockData = mocks[url];
       var options = mockData.options || {};
-      var response = new Response(mockData.data, {
-        status: mockData.code,
-        responseText: mockData.data
-      });
+      var response = new Response({
+          body: JSON.stringify(mockData.data || {})
+        }, {
+          status: mockData.code,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json; charset=utf-8'
+          }
+        });
 
       if (options.timeout) {
 

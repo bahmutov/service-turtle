@@ -13,7 +13,10 @@
     "docs",
     "Gruntfile.js",
     "package.json",
-    "index.html"
+    "index.html",
+    "eslint.json",
+    "jscs.json",
+    "images"
   ],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "keywords": [
