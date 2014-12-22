@@ -21,7 +21,7 @@ self.addEventListener('fetch', function (event) {
     var urlReg = new RegExp(url);
     if (urlReg.test(event.request.url)) {
       var mockData = mocks[url];
-      var options = mockData.options;
+      var options = mockData.options || {};
       var response = new Response(mockData.data, {
         status: mockData.code,
         responseText: mockData.data
