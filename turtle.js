@@ -1,9 +1,28 @@
-if (navigator && navigator.serviceWorker) {
-  navigator.serviceWorker.register('/service-turtle.js').then(function () {
+(function registerTurtle(root) {
+
+  if (!navigator) {
+    console.error('Missing navigator');
+    return;
+  }
+
+  if (!navigator.serviceWorker) {
+    console.error('Sorry, not ServiceWorker feature, maybe enable it?');
+    console.error('http://jakearchibald.com/2014/using-serviceworker-today/');
+  }
+
+  function getCurrentScriptFolder() {
+    var scriptEls = document.getElementsByTagName( 'script' );
+    var thisScriptEl = scriptEls[scriptEls.length - 1];
+    var scriptPath = thisScriptEl.src;
+    return scriptPath.substr(0, scriptPath.lastIndexOf( '/' ) + 1 );
+  }
+
+  var scriptFolder = getCurrentScriptFolder();
+
+  navigator.serviceWorker.register(scriptFolder + 'service-turtle.js').then(function () {
     console.log('Caught service turtle, use `turtle` object to mock responses');
 
-
-    window.turtle = {
+    root.turtle = {
       clear: function () {
         if (navigator.serviceWorker && navigator.serviceWorker.controller) {
           navigator.serviceWorker.controller.postMessage('clear');
@@ -27,7 +46,5 @@ if (navigator && navigator.serviceWorker) {
   }, function (err) {
     console.error('no luck loading service worker', err);
   });
-} else {
-  console.error('Sorry, not ServiceWorker feature, maybe enable it?');
-  console.error('http://jakearchibald.com/2014/using-serviceworker-today/');
-}
+
+}(window));
