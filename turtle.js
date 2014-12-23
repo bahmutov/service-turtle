@@ -29,12 +29,11 @@
           console.log('turtle has cleared mocks');
         }
       },
-      get: function (url, code, options) {
+      get: function (url, options) {
         if (navigator.serviceWorker && navigator.serviceWorker.controller) {
           navigator.serviceWorker.controller.postMessage({
             method: 'get',
             url: url,
-            code: code,
             options: options
           });
         } else {

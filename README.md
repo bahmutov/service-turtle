@@ -18,11 +18,12 @@ This will register `turtle` object on the `window` scope. Use `turtle` object me
 mock responses for specific urls.
 
 ```js
-turtle.get(urlRegexString, returnCode, options);
+turtle.get(urlRegexString, options);
 urlgRegexString - string used to construct RegExp to test against request url
-returnCode - numeric return code for given url
-options (optional) - extra fields, currently only single field is used
+options - response fields
+    code - numeric return code for given url (between 200 and 599)
     timeout (ms) - return mock code after waiting for timeout milliseconds
+    body - object to return
 ```
 
 ## Example
@@ -31,7 +32,7 @@ Mock all GET requests to `/some/url/` to return 502 error after 3 seconds.
 See [index.html](index.html) in this repo as example.
 
 ```js
-turtle.get('/some/url', 502, { timeout: 3000 });
+turtle.get('/some/url', { code: 502, timeout: 3000 });
 ```
 
 Clear all installed mocks
