@@ -24,14 +24,15 @@ self.addEventListener('fetch', function (event) {
       var options = mockData.options || {};
 
       var responseOptions = {
-        status: mockData.code,
+        status: options.code || options.status || options.statusCode,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json; charset=utf-8'
         }
       };
 
-      var response = new Response(JSON.stringify(options.body), responseOptions);
+      var body = JSON.stringify(options.body || options.data);
+      var response = new Response(body, responseOptions);
 
       if (options.timeout) {
 

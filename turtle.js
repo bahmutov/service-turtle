@@ -30,6 +30,7 @@
         }
       },
       get: function (url, options) {
+        // TODO validate options object
         if (navigator.serviceWorker && navigator.serviceWorker.controller) {
           navigator.serviceWorker.controller.postMessage({
             method: 'get',
