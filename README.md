@@ -2,7 +2,7 @@
 
 > HTTP mock in-page proxy using ServiceWorker
 
-Read [Robustness testing using proxies][http://bahmutov.calepin.co/robustness-testing-using-proxies.html].
+Read [Robustness testing using proxies](http://bahmutov.calepin.co/robustness-testing-using-proxies.html).
 
 See [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
 enable ServiceWorker in Chrome today.
