@@ -7,9 +7,12 @@
 
 <body>
   <h1>service-turtle</h1>
-
+  <p>Browse to this page from a local webserver, for example using http-server. Open browser console to see the
+  results</p>
   <div>
-    <button id="fetch">Fetch something</button>
+    <button id="fetch">Fetch something</button> using GET to <code>/some/url</code>
+    <p>You can mock the response using <code>turtle.get('/some/url', { code: 200, data: 'hi there' });</code> and then
+    click the button again.</p>
   </div>
 
   <script>
@@ -44,5 +47,6 @@
     });
   </script>
   <script src="turtle.js"></script>
+  <script src="foo.js"></script>
 </body>
 </html>
