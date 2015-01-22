@@ -7,7 +7,7 @@ Read [Robustness testing using proxies](http://bahmutov.calepin.co/robustness-te
 See [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
 enable ServiceWorker in Chrome today.
 
-    Open chrome://flags/ in the Chrome browser
+    Open chrome://flags/#enable-experimental-web-platform-features in the Chrome browser
     Enable "Enable experimental Web Platform features."
     Restart Chrome
 
