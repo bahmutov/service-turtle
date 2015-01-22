@@ -17,9 +17,11 @@
     return scriptPath.substr(0, scriptPath.lastIndexOf( '/' ) + 1 );
   }
 
-  var scriptFolder = getCurrentScriptFolder();
+  // read service worker script url from config or determine from the current script
+  var serviceScriptUrl = typeof root.serviceTurtleConfig === 'undefined' ?
+    getCurrentScriptFolder() + 'service-turtle.js' : root.serviceTurtleConfig.serviceScriptUrl;
 
-  navigator.serviceWorker.register(scriptFolder + 'service-turtle.js').then(function () {
+  navigator.serviceWorker.register(serviceScriptUrl).then(function () {
     console.log('Caught service turtle, use `turtle` object to mock responses');
 
     root.turtle = {

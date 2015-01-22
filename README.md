@@ -61,6 +61,19 @@ Then after another reload the service worker will start.
 
 **Note:** service worker script can only be loaded from a safe url: `localhost`, `127.0.0.1` or via `https` protocol. 
 
+## Determin the service worker url
+
+By default, the `turtle.js` script determines the url to the service worker automatically (assuming it is in the
+same folder as itself). You can override the service worker url and provide the url using global config
+
+    :::html
+    <script>
+    var serviceTurtleConfig = {
+      serviceScriptUrl: '/path/to/service-turtle.js'
+    };
+    </script>
+    <script src="bower_components/service-turtle/turtle.js"></script>
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2014
