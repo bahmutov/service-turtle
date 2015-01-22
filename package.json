@@ -37,7 +37,10 @@
   ],
   "license": "MIT",
   "main": "turtles.js",
-  "pre-commit": "npm test",
+  "pre-commit": [
+    "npm test",
+    "npm version"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:bahmutov/service-turtle.git"
