@@ -20,14 +20,14 @@ module.exports = function(grunt) {
     jshint: {
       all: sourceFiles,
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: 'utils/.jshintrc'
       }
     },
 
     eslint: {
       target: sourceFiles,
       options: {
-        config: 'eslint.json',
+        config: 'utils/eslint.json',
         rulesdir: ['./node_modules/eslint-rules']
       }
     },
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     jscs: {
       src: sourceFiles,
       options: {
-          config: 'jscs.json'
+          config: 'utils/jscs.json'
       }
     },
 
@@ -47,7 +47,8 @@ module.exports = function(grunt) {
         'index.html',
         'README.md',
         'turtle.js',
-        'service-turtle.js'
+        'service-turtle.js',
+        'node_modules/console-log-div/console-log-div.js'
       ]
     }
   });
