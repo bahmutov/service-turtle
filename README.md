@@ -11,6 +11,10 @@ enable ServiceWorker in Chrome today.
     Enable "Enable experimental Web Platform features."
     Restart Chrome
 
+**NOTE** Google Chrome v40 broke loading of ServiceWorkers. For now, please use Google Chrome Canary 
+(I tested v42). You can also *load* ServiceWorker in Firefox (after turning on service worker in `about:config` page),
+but Firefox has implemented a different communication model, thus you cannot send commands to the ServiceWorker :(
+
 ## Install
 
     bower install service-turtle

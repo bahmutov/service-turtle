@@ -1,7 +1,7 @@
 {
   "name": "service-turtle",
   "description": "HTTP mock in-page proxy using ServiceWorker",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/service-turtle/issues"
@@ -9,6 +9,7 @@
   "contributors": [],
   "dependencies": {},
   "devDependencies": {
+    "console-log-div": "0.0.5",
     "eslint-rules": "0.2.0",
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.10.0",
