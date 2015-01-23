@@ -1,25 +1,44 @@
 # service-turtle
 
-Read [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
+> HTTP mock in-page proxy using ServiceWorker
+
+Read [Robustness testing using proxies](http://bahmutov.calepin.co/robustness-testing-using-proxies.html).
+
+See [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
 enable ServiceWorker in Chrome today.
 
-    Open chrome://flags/ in the Chrome browser
+    Open chrome://flags/#enable-experimental-web-platform-features in the Chrome browser
     Enable "Enable experimental Web Platform features."
     Restart Chrome
+
+**NOTE** Google Chrome v40 broke loading of ServiceWorkers. For now, please use Google Chrome Canary 
+(I tested v42). You can also *load* ServiceWorker in Firefox (after turning on service worker in `about:config` page),
+but Firefox has implemented a different communication model, thus you cannot send commands to the ServiceWorker :(
 
 ## Install
 
     bower install service-turtle
 
 Include `turtle.js` in your page. It will call `service-turtle.js` as a service worker.
-This will register `turtle` object on the `window` scope.
+This will register `turtle` object on the `window` scope. Use `turtle` object methods to add
+mock responses for specific urls.
+
+```js
+turtle.get(urlRegexString, options);
+urlgRegexString - string used to construct RegExp to test against request url
+options - response fields
+    code - numeric return code for given url (between 200 and 599)
+    timeout (ms) - return mock code after waiting for timeout milliseconds
+    body - object to return
+```
 
 ## Example
 
 Mock all GET requests to `/some/url/` to return 502 error after 3 seconds.
+See [index.html](index.html) in this repo as example.
 
 ```js
-turtle.get('/some/url', 502, { timeout: 3000 });
+turtle.get('/some/url', { code: 502, timeout: 3000 });
 ```
 
 Clear all installed mocks
@@ -43,6 +62,39 @@ if you want to step through its code to debug it:
 
 These steps will force the page to load the new service worker next time you visit the page.
 Then after another reload the service worker will start.
+
+**Note:** service worker script can only be loaded from a safe url: `localhost`, `127.0.0.1` or via `https` protocol. 
+
+## Determin the service worker url
+
+By default, the `turtle.js` script determines the url to the service worker automatically (assuming it is in the
+same folder as itself). You can override the service worker url and provide the url using global config
+
+```html
+<script>
+var serviceTurtleConfig = {
+  serviceScriptUrl: '/path/to/service-turtle.js'
+};
+</script>
+<script src="bower_components/service-turtle/turtle.js"></script>
+```
+
+## Pass the ServiceWorker scope
+
+ServiceWorker is limited in the requests it can intercept to a given scope url. By default
+the scope is all sub urls of the script that loads the service worker (`turtl.js`). You can
+pass a different scope using config object
+
+```html
+<script>
+var serviceTurtleConfig = {
+  serviceScriptUrl: '/path/to/service-turtle.js',
+  scope: '/'
+};
+</script>
+<script src="bower_components/service-turtle/turtle.js"></script>
+```
+
 
 ### Small print
 
