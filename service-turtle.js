@@ -1,3 +1,6 @@
+/*
+  This is ServiceWorker code
+*/
 /* global self, Response */
 var myName = 'service-turtle';
 console.log(myName, 'startup');
@@ -10,6 +13,7 @@ self.addEventListener('activate', function () {
   console.log(myName, 'activated');
 });
 
+// Note: the mocks stay valid even during website reload
 var mocks;
 
 self.addEventListener('fetch', function (event) {

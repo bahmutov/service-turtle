@@ -8,6 +8,27 @@
   if (!navigator.serviceWorker) {
     console.error('Sorry, not ServiceWorker feature, maybe enable it?');
     console.error('http://jakearchibald.com/2014/using-serviceworker-today/');
+    return;
+  }
+
+  function la(condition) {
+    if (!condition) {
+      var args = Array.prototype.slice.call(arguments, 1)
+        .map(JSON.stringify);
+      throw new Error(args.join(' '));
+    }
+  }
+
+  function isFunction(f) {
+    return typeof f === 'function';
+  }
+
+  function isString(f) {
+    return typeof f === 'string';
+  }
+
+  function isUnemptyString(s) {
+    return isString(s) && s;
   }
 
   function getCurrentScriptFolder() {
@@ -21,32 +42,39 @@
   var serviceScriptUrl = typeof root.serviceTurtleConfig === 'undefined' ?
     getCurrentScriptFolder() + 'service-turtle.js' : root.serviceTurtleConfig.serviceScriptUrl;
 
-  navigator.serviceWorker.register(serviceScriptUrl).then(function () {
-    console.log('Caught service turtle, use `turtle` object to mock responses');
+  function registeredWorker(registration) {
+    la(registration, 'missing service worker registration');
+    la(registration.active, 'missing active service worker');
+    la(isFunction(registration.active.postMessage),
+      'expected function postMessage to communicate with service worker');
+
+    var send = registration.active.postMessage.bind(registration.active);
+    console.log('Have a service-turtle, use `turtle` object to mock responses');
 
     root.turtle = {
       clear: function () {
-        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-          navigator.serviceWorker.controller.postMessage('clear');
-          console.log('turtle has cleared mocks');
-        }
+        send('clear');
+        console.log('turtle has cleared mocks');
       },
       get: function (url, options) {
-        // TODO validate options object
-        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-          navigator.serviceWorker.controller.postMessage({
-            method: 'get',
-            url: url,
-            options: options
-          });
-        } else {
-          console.error('service worker not found, maybe reload?');
-        }
+        la(isUnemptyString(url), 'expected url pattern', url);
+        la(options && options.code, 'expected at least return code', options);
+
+        send({
+          method: 'get',
+          url: url,
+          options: options
+        });
       }
     };
+  }
 
-  }, function (err) {
-    console.error('no luck loading service worker', err);
-  });
+  function onError(err) {
+    console.error('turtle error', err);
+  }
+
+  navigator.serviceWorker.register(serviceScriptUrl)
+    .then(registeredWorker)
+    .catch(onError);
 
 }(window));
