@@ -70,13 +70,31 @@ Then after another reload the service worker will start.
 By default, the `turtle.js` script determines the url to the service worker automatically (assuming it is in the
 same folder as itself). You can override the service worker url and provide the url using global config
 
-    :::html
-    <script>
-    var serviceTurtleConfig = {
-      serviceScriptUrl: '/path/to/service-turtle.js'
-    };
-    </script>
-    <script src="bower_components/service-turtle/turtle.js"></script>
+```html
+<script>
+var serviceTurtleConfig = {
+  serviceScriptUrl: '/path/to/service-turtle.js'
+};
+</script>
+<script src="bower_components/service-turtle/turtle.js"></script>
+```
+
+## Pass the ServiceWorker scope
+
+ServiceWorker is limited in the requests it can intercept to a given scope url. By default
+the scope is all sub urls of the script that loads the service worker (`turtl.js`). You can
+pass a different scope using config object
+
+```html
+<script>
+var serviceTurtleConfig = {
+  serviceScriptUrl: '/path/to/service-turtle.js',
+  scope: '/'
+};
+</script>
+<script src="bower_components/service-turtle/turtle.js"></script>
+```
+
 
 ### Small print
 

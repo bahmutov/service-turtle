@@ -39,8 +39,17 @@
   }
 
   // read service worker script url from config or determine from the current script
-  var serviceScriptUrl = typeof root.serviceTurtleConfig === 'undefined' ?
-    getCurrentScriptFolder() + 'service-turtle.js' : root.serviceTurtleConfig.serviceScriptUrl;
+  var serviceScriptUrl;
+  if (root.serviceTurtleConfig && isUnemptyString(root.serviceTurtleConfig.serviceScriptUrl)) {
+    serviceScriptUrl = root.serviceTurtleConfig.serviceScriptUrl;
+  } else {
+    serviceScriptUrl = getCurrentScriptFolder() + 'service-turtle.js';
+  }
+
+  var scope = '/';
+  if (root.serviceTurtleConfig && isUnemptyString(root.serviceTurtleConfig.scope)) {
+    scope = root.serviceTurtleConfig.scope;
+  }
 
   function registeredWorker(registration) {
     la(registration, 'missing service worker registration');
@@ -73,7 +82,7 @@
     console.error('turtle error', err);
   }
 
-  navigator.serviceWorker.register(serviceScriptUrl)
+  navigator.serviceWorker.register(serviceScriptUrl, { scope: scope })
     .then(registeredWorker)
     .catch(onError);
 
