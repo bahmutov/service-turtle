@@ -82,8 +82,9 @@
     console.error('turtle error', err);
   }
 
+  /* eslint dot-notation:0 */
   navigator.serviceWorker.register(serviceScriptUrl, { scope: scope })
     .then(registeredWorker)
-    .catch(onError);
+    ['catch'](onError);
 
 }(window));
