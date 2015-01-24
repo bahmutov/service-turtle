@@ -2,6 +2,12 @@
 
 > HTTP mock in-page proxy using ServiceWorker
 
+[![NPM][service-turtle-div-icon] ][service-turtle-div-url]
+
+[![Build status][service-turtle-div-ci-image] ][service-turtle-div-ci-url]
+[![dependencies][service-turtle-div-dependencies-image] ][service-turtle-div-dependencies-url]
+[![devdependencies][service-turtle-div-devdependencies-image] ][service-turtle-div-devdependencies-url]
+
 Read [Robustness testing using proxies](http://bahmutov.calepin.co/robustness-testing-using-proxies.html).
 
 See [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
@@ -138,3 +144,12 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[service-turtle-div-icon]: https://nodei.co/npm/service-turtle-div.png?downloads=true
+[service-turtle-div-url]: https://npmjs.org/package/service-turtle-div
+[service-turtle-div-ci-image]: https://travis-ci.org/bahmutov/service-turtle-div.png?branch=master
+[service-turtle-div-ci-url]: https://travis-ci.org/bahmutov/service-turtle-div
+[service-turtle-div-dependencies-image]: https://david-dm.org/bahmutov/service-turtle-div.png
+[service-turtle-div-dependencies-url]: https://david-dm.org/bahmutov/service-turtle-div
+[service-turtle-div-devdependencies-image]: https://david-dm.org/bahmutov/service-turtle-div/dev-status.png
+[service-turtle-div-devdependencies-url]: https://david-dm.org/bahmutov/service-turtle-div#info=devDependencies
