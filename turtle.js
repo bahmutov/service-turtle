@@ -11,10 +11,14 @@
     return;
   }
 
+  function toString(x) {
+    return typeof x === 'string' ? x : JSON.stringify(x);
+  }
+
   function la(condition) {
     if (!condition) {
       var args = Array.prototype.slice.call(arguments, 1)
-        .map(JSON.stringify);
+        .map(toString);
       throw new Error(args.join(' '));
     }
   }
@@ -67,6 +71,13 @@
       },
       get: function (url, options) {
         la(isUnemptyString(url), 'expected url pattern', url);
+
+        if (typeof options === 'number') {
+          options = {
+            code: options
+          };
+        }
+
         la(options && options.code, 'expected at least return code', options);
 
         send({

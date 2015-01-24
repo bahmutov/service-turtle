@@ -23,6 +23,8 @@ Include `turtle.js` in your page. It will call `service-turtle.js` as a service 
 This will register `turtle` object on the `window` scope. Use `turtle` object methods to add
 mock responses for specific urls.
 
+## Use
+
 ```js
 turtle.get(urlRegexString, options);
 urlgRegexString - string used to construct RegExp to test against request url
@@ -31,6 +33,9 @@ options - response fields
     timeout (ms) - return mock code after waiting for timeout milliseconds
     body - object to return
 ```
+
+**alias** You can use `turtle.get('/path/part', <code>)` as a shortcut to return `<code>` when url matches
+the `/path/part` regular expression.
 
 ## Example
 
