@@ -2,11 +2,11 @@
 
 > HTTP mock in-page proxy using ServiceWorker
 
-[![NPM][service-turtle-div-icon] ][service-turtle-div-url]
+[![NPM][service-turtle-icon] ][service-turtle-url]
 
-[![Build status][service-turtle-div-ci-image] ][service-turtle-div-ci-url]
-[![dependencies][service-turtle-div-dependencies-image] ][service-turtle-div-dependencies-url]
-[![devdependencies][service-turtle-div-devdependencies-image] ][service-turtle-div-devdependencies-url]
+[![Build status][service-turtle-ci-image] ][service-turtle-ci-url]
+[![dependencies][service-turtle-dependencies-image] ][service-turtle-dependencies-url]
+[![devdependencies][service-turtle-devdependencies-image] ][service-turtle-devdependencies-url]
 
 Read [Robustness testing using proxies](http://bahmutov.calepin.co/robustness-testing-using-proxies.html).
 
@@ -145,11 +145,11 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[service-turtle-div-icon]: https://nodei.co/npm/service-turtle-div.png?downloads=true
-[service-turtle-div-url]: https://npmjs.org/package/service-turtle-div
-[service-turtle-div-ci-image]: https://travis-ci.org/bahmutov/service-turtle-div.png?branch=master
-[service-turtle-div-ci-url]: https://travis-ci.org/bahmutov/service-turtle-div
-[service-turtle-div-dependencies-image]: https://david-dm.org/bahmutov/service-turtle-div.png
-[service-turtle-div-dependencies-url]: https://david-dm.org/bahmutov/service-turtle-div
-[service-turtle-div-devdependencies-image]: https://david-dm.org/bahmutov/service-turtle-div/dev-status.png
-[service-turtle-div-devdependencies-url]: https://david-dm.org/bahmutov/service-turtle-div#info=devDependencies
+[service-turtle-icon]: https://nodei.co/npm/service-turtle.png?downloads=true
+[service-turtle-url]: https://npmjs.org/package/service-turtle
+[service-turtle-ci-image]: https://travis-ci.org/bahmutov/service-turtle.png?branch=master
+[service-turtle-ci-url]: https://travis-ci.org/bahmutov/service-turtle
+[service-turtle-dependencies-image]: https://david-dm.org/bahmutov/service-turtle.png
+[service-turtle-dependencies-url]: https://david-dm.org/bahmutov/service-turtle
+[service-turtle-devdependencies-image]: https://david-dm.org/bahmutov/service-turtle/dev-status.png
+[service-turtle-devdependencies-url]: https://david-dm.org/bahmutov/service-turtle#info=devDependencies
