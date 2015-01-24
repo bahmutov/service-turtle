@@ -62,7 +62,11 @@
       'expected function postMessage to communicate with service worker');
 
     var send = registration.active.postMessage.bind(registration.active);
-    console.log('Have a service-turtle, use `turtle` object to mock responses');
+    var info = '\nservice-turtle - HTTP mock in-page proxy using ServiceWorker.\n' +
+      'see https://github.com/bahmutov/service-turtle for details.\n' +
+      'by Gleb Bahmutov @bahmutov\n\n' +
+      'I have a valid service-turtle, use `turtle` object to mock responses';
+    console.log(info);
 
     root.turtle = {
       clear: function () {
