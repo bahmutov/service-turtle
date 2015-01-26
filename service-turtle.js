@@ -65,7 +65,7 @@ self.onmessage = function onMessage(event) {
   }
 
   if (event.data.url) {
-    console.log('registering mock response for url', event.data.url);
+    console.log('registering mock response for', event.data.method, 'url', event.data.url);
 
     mocks = mocks || {};
     mocks[event.data.url] = event.data;

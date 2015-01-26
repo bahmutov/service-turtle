@@ -9,14 +9,15 @@
   <h1>service-turtle</h1>
 
   <div>
-    <button id="fetch">Fetch something</button>
+    <button id="get">GET request</button>
+    <button id="post">POST request</button>
   </div>
 
   <script src="node_modules/console-log-div/console-log-div.js"></script>
   <script>
-    function fetch(url) {
+    function fetch(method, url) {
       var request = new XMLHttpRequest();
-      request.open('GET', url, true);
+      request.open(method, url, true);
 
       request.onload = function() {
         if (request.status >= 200 && request.status < 400){
@@ -35,13 +36,16 @@
       request.send();
     }
 
-    function onButtonClick() {
-      console.log('button clicked');
-      fetch('/some/url');
+    function onButtonClick(method) {
+      console.log(method, 'button clicked');
+      fetch(method, '/some/url');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelector('#fetch').addEventListener('click', onButtonClick);
+      document.querySelector('#get').addEventListener('click',
+        onButtonClick.bind(null, 'GET'));
+      document.querySelector('#post').addEventListener('click',
+        onButtonClick.bind(null, 'POST'));
     });
   </script>
 

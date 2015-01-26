@@ -68,28 +68,31 @@
       'I have a valid service-turtle, use `turtle` object to mock responses';
     console.log(info);
 
+    function sendMock(url, options) {
+      la(isUnemptyString(url), 'expected url pattern', url);
+
+      if (typeof options === 'number') {
+        options = {
+          code: options
+        };
+      }
+
+      la(options && options.code, 'expected at least return code', options);
+
+      send({
+        method: 'get',
+        url: url,
+        options: options
+      });
+    }
+
     root.turtle = {
       clear: function () {
         send('clear');
         console.log('turtle has cleared mocks');
       },
-      get: function (url, options) {
-        la(isUnemptyString(url), 'expected url pattern', url);
-
-        if (typeof options === 'number') {
-          options = {
-            code: options
-          };
-        }
-
-        la(options && options.code, 'expected at least return code', options);
-
-        send({
-          method: 'get',
-          url: url,
-          options: options
-        });
-      }
+      get: sendMock,
+      post: sendMock
     };
   }
 
