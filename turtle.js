@@ -91,8 +91,15 @@
         send('clear');
         console.log('turtle has cleared mocks');
       },
+      list: function () {
+        send('list');
+      },
       get: sendMock,
       post: sendMock
+    };
+
+    registration.active.onmessage = function messageFromServiceWorker(e) {
+      console.log('received message from service worker', e);
     };
   }
 

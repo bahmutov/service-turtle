@@ -65,6 +65,15 @@ self.onmessage = function onMessage(event) {
       return;
     }
 
+    case 'list': {
+      // TODO: would it make more sense to use self-addressed?
+      event.source.postMessage({
+        cmd: 'list',
+        mocks: mocks
+      }, '*');
+      return;
+    }
+
     default: {
       if (event.data.url) {
         console.log('registering mock response for', event.data.method, 'url', event.data.url);
