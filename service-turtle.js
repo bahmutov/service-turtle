@@ -59,15 +59,19 @@ self.addEventListener('fetch', function (event) {
 self.onmessage = function onMessage(event) {
   console.log('message to service worker', event.data);
 
-  if (event.data === 'clear') {
-    mocks = {};
-    return;
-  }
+  switch (event.data) {
+    case 'clear': {
+      mocks = {};
+      return;
+    }
 
-  if (event.data.url) {
-    console.log('registering mock response for', event.data.method, 'url', event.data.url);
+    default: {
+      if (event.data.url) {
+        console.log('registering mock response for', event.data.method, 'url', event.data.url);
 
-    mocks = mocks || {};
-    mocks[event.data.url] = event.data;
+        mocks = mocks || {};
+        mocks[event.data.url] = event.data;
+      }
+    }
   }
 };
