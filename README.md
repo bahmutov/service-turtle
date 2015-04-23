@@ -8,7 +8,7 @@
 [![dependencies][service-turtle-dependencies-image] ][service-turtle-dependencies-url]
 [![devdependencies][service-turtle-devdependencies-image] ][service-turtle-devdependencies-url]
 
-Read [Robustness testing using proxies](http://bahmutov.calepin.co/robustness-testing-using-proxies.html).
+Read [Robustness testing using proxies](http://glebbahmutov.com/blog/robustness-testing-using-proxies/).
 
 See [intro to ServiceWorker](http://jakearchibald.com/2014/using-serviceworker-today/) to see how to 
 enable ServiceWorker in Chrome today.
@@ -113,7 +113,7 @@ Author: Gleb Bahmutov &copy; 2014
 
 * [@bahmutov](https://twitter.com/bahmutov)
 * [glebbahmutov.com](http://glebbahmutov.com)
-* [blog](http://bahmutov.calepin.co/)
+* [blog](http://glebbahmutov.com/blog/)
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
