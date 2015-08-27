@@ -1,7 +1,7 @@
 /*
   This is ServiceWorker code
 */
-/* global self, Response */
+/* global self, Response, Promise */
 var myName = 'service-turtle';
 console.log(myName, 'startup');
 
